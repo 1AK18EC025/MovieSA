@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Details</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+
+<body>
+    <h1 id="header">Movie Search</h1>
+    <form action="/search" method="post">
+        <input type="text" id="query" name="query" placeholder="Enter a movie title">
+        <input type="submit" value="Search">
+    </form>
+
+    {% if results %}
+    <h4>Results:</h4>
+    <ul >
+        {% for num, movie in enumerate(results) %}
+        <li>
+            <h4>=========================================================================================================================</h4>
+        </li>
+        <li >
+            <h3>Movie NAME = {{ movie['title'] }}</h3>
+        </li>
+        <li>
+            <h4>Released On = {{ movie['release_date'] }}</h4>
+        </li>
+        <li>
+            <h4>Language = {{ movie['original_language'] }}</h4>
+        </li>
+        <li>
+            <h4>Popularity = {{ movie['popularity'] }}</h4>
+        </li>
+        <li>
+            <h4>Overview = {{ movie['overview'] }}</h4>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+</body>
+</html>
